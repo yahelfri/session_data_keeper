@@ -28,7 +28,7 @@ SECRET_KEY = 'xt3d-gb^dhho)kf74(%b)4pn_21w!x@6+3_jcq6t=)-(+kxo%d'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://datakeeperapp.herokuapp.com/',
+    'datakeeperapp.herokuapp.com/',
     '127.0.0.1'
 ]
 
