@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> user details form</title>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static '/css/log-in.css' %}">
+
+</head>
+
+<div class="banner">
+  <h1 class="banner_headline">BackBox home assignment</h1>
+</div>
+
+<body>
+<div class="center-screen ">
+    {% block content%}
+    <div class="card">
+        <table>
+            {% for field in form %}
+                <tr>
+                     <th>
+                         <label class="field-label{% if field.field.required %} field-required{% endif %}" for="{{ field.name }}">{{ field.label }}</label>
+                     </th>
+                     <td>
+                         <br/><br/>
+                        {% if field.errors %}<span class="field-error">{{ field.errors }}</span>{% endif %}
+                        {{ field }}<br/>
+                        {% if field.help_text %}<span class="field-helptext">{{ field.help_text|safe }}</span>{% endif %}
+                         <br/><br/>
+                    </td>
+                 </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <form action="{% url 'home-page'%}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Submit" class="button"/>
+    </form>
+    {% endblock %}
+</div>
+</body>
+<script>
+
+    //TODO: add event to all inputs using loop
+
+    const input1 = document.getElementById("id_first_name");
+    const input2 = document.getElementById("id_last_name");
+    const input3 = document.getElementById("id_phone_number");
+
+    input1.addEventListener('input', updateValue);
+    input2.addEventListener('input', updateValue);
+    input3.addEventListener('input', updateValue);
+
+    function updateValue(e) {
+        var token = "{{csrf_token}}";
+        var first_name = $("#id_first_name").val();
+        var last_name = $("#id_last_name").val();
+        var phone_number =  $("#id_phone_number").val();
+        fetch("test", {
+				method:'POST',
+				headers:{
+                    'Content-type':'application/json',
+					'X-CSRFToken':token,
+				},
+				body:JSON.stringify({'first_name':first_name,'last_name':last_name,'phone_number':phone_number})
+			}
+			)
+    }
+</script>
+</html>
+
+
+
+
+
+
+
+
+

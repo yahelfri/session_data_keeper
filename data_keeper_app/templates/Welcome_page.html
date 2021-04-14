@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WelcomePage</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/welcome.css' %}">
+</head>
+<body>
+    <div class="center-screen">
+        <div class="card">
+            <img src="{% static '/images/backboxha.png' %}" alt="Avatar" style="width:100%;   border-radius: 10px 10px 0 0;">
+            <div class="container">
+                    <form action="log-in" method="post">
+                        {% csrf_token %}
+                        <button class="button" onclick="{% url 'log-in'%}">LOGIN</button>
+                        <button class="button">SIGN UP</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

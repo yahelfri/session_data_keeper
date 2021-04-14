@@ -1,8 +1,12 @@
+ajax==3.0.0
 asgiref==3.3.1
+decorator==5.0.6
 dj-database-url==0.5.0
 dj-static==0.0.6
 Django==3.1.7
+django-appconf==1.0.4
 django-filter==2.4.0
+-e git://github.com/yceruto/django-ajax@92e311e4a174fc4b3e463da7b28d28b410f4b04e#egg=djangoajax
 djangorestframework==3.12.4
 docopt==0.6.2
 gitignore==0.0.8
